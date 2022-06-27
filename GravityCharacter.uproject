@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7C81F397-4E9C-E2EB-0395-84ABB88BCEA4}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "GravityCharacter",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
