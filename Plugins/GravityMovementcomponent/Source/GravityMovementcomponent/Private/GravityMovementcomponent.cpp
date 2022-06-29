@@ -744,7 +744,8 @@ bool UGravityMovementcomponent::IsWalkable(const FHitResult& Hit) const
 	}
 
 	// Can't walk on this surface if it is too steep.
-	if (FVector::DotProduct(Hit.ImpactNormal, -GravityDirection) < TestWalkableZ)
+	const auto Len = FVector::DotProduct(Hit.ImpactNormal, -GravityDirection);
+	if (Len < TestWalkableZ)
 	{
 		return false;
 	}
@@ -1306,6 +1307,10 @@ void UGravityMovementcomponent::ComputeFloorDist(
 					return;
 				}
 			}
+			else
+			{
+				UE_LOG(LogTemp, VeryVerbose, TEXT("- Reject StepUp "));
+			}
 		}
 	}
 
@@ -1391,8 +1396,6 @@ bool UGravityMovementcomponent::FloorSweepTest(
 
 void UGravityMovementcomponent::AdjustFloorHeight()
 {
-	return;
-
 	// If we have a floor check that hasn't hit anything, don't adjust height.
 	if (!CurrentFloor.IsWalkableFloor())
 	{
